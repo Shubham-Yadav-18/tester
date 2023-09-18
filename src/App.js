@@ -2,22 +2,23 @@
 
 function App() {
   // const b=<h1>Shubham</h1>;
+  const users=[{name:"Shubham",age:21},{name:"Ayush",age:21},{name:"Ramkaran",age:24}];
   return (
     <div className="App">
-     <Display salary={3000} position="sde" company="amazon"  />
+      {
+        users.map((user,key)=>{
+           return <User name={user.name} age={user.age} />;
+        })
+      };
      </div>
   );
 };
-const Display=(props)=>{
-  const age=18;
-  const isGreen=true;
-  return (<div>
-      
-    {age>18? <h1>eligible</h1>: <h1>not eligible</h1> }
-    { <div style={{color:isGreen?"green":"red"}}> this is button</div> }
-    {isGreen&& <button>this is button</button> }
-
-  </div>);
-}; 
+const User=(props)=>{
+  return (
+    <div>
+       {props.name} {props.age}
+    </div>
+  );
+};
 
 export default App;
