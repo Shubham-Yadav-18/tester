@@ -1,23 +1,31 @@
 import { useState } from "react";
 
 function App() {
-
-  const [textColor, setTextColor] = useState("red");
-  const [user, setUser] = useState("");
+  const [count, setCount] = useState(0);
   return (
     <div className="App">
       <button
         onClick={() => {
-          setTextColor(textColor === "red" ? "black" : "red");
+          setCount(count + 1);
         }}
       >
-        Click me to change color
+        Increase
       </button>
-      {<h1 style={{ color: textColor }}>hi My name is Shubham</h1>}
-      <input onChange={(e)=>{
-          setUser(e.target.value);
-      }}></input>
-      <h1>{user}</h1>
+      <button
+        onClick={() => {
+          setCount(count - 1);
+        }}
+      >
+        Decrease
+      </button>
+      <button
+        onClick={() => {
+          setCount(0);
+        }}
+      >
+        Set to Zero
+      </button>
+      <h1>{count}</h1>
     </div>
   );
 }
