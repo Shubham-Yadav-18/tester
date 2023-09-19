@@ -1,24 +1,25 @@
-
+import { useState } from "react";
 
 function App() {
-  // const b=<h1>Shubham</h1>;
-  const users=[{name:"Shubham",age:21},{name:"Ayush",age:21},{name:"Ramkaran",age:24}];
+
+  const [textColor, setTextColor] = useState("red");
+  const [user, setUser] = useState("");
   return (
     <div className="App">
-      {
-        users.map((user,key)=>{
-           return <User name={user.name} age={user.age} />;
-        })
-      };
-     </div>
-  );
-};
-const User=(props)=>{
-  return (
-    <div>
-       {props.name} {props.age}
+      <button
+        onClick={() => {
+          setTextColor(textColor === "red" ? "black" : "red");
+        }}
+      >
+        Click me to change color
+      </button>
+      {<h1 style={{ color: textColor }}>hi My name is Shubham</h1>}
+      <input onChange={(e)=>{
+          setUser(e.target.value);
+      }}></input>
+      <h1>{user}</h1>
     </div>
   );
-};
+}
 
 export default App;
