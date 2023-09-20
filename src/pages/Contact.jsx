@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../App'
 
 const Contact = () => {
+    const {username}=useContext(AppContext)
   return (
     <div>
-      <h1>This is contact page</h1>
+      <h1>This is contact page and user is {username}</h1>
     </div>
   )
 }
