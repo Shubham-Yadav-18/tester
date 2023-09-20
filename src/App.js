@@ -1,57 +1,25 @@
-import { useState } from "react";
-import TaskItem from "./component/NewTask";
-function App() {
-  const [list, setList] = useState([]);
-  const [newTask, setTask] = useState("");
-  const deleteTask = (taskId) => {
-    setList(list.filter((task) => task.id !== taskId));
-  };
-  const completTask = (id) => {
-    setList(
-      list.map((task) => {
-        if (task.id === id) {
-          return { ...task, completed: true };
-        } else return task;
-      })
-    );
-  };
-  return (
-    <div style={{ textAlign: "center" }}>
-      <div className="addtask">
-        <input
-          value={newTask}
-          onChange={(e) => {
-            setTask(e.target.value);
-          }}
-        ></input>
-        <button
-          onClick={() => {
-            const taskobj = {
-              id: list.length === 0 ? 1 : list[list.length - 1].id + 1,
-              taskName: newTask,
-              completed: false,
-            };
-            setList([...list, taskobj]);
-            setTask("");
-          }}
-        >
-          Add Task
-        </button>
-      </div>
-      {list.map((item) => {
-        return (
-          <TaskItem
-            taskName={item.taskName}
-            id={item.id}
-            completed={item.completed}
-            deleteTask={deleteTask}
-            completTask={completTask}            
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-          />
-        );
-      })}
+const App = () => {
+  const [predictedAge, setPredictedAge] = useState(0);
+  const[name,setName]=useState("");
+  const fetchAge=()=>{
+     axios.get(`https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent`).then((res)=>{
+      console.log(res.data);
+     })
+  }
+ 
+
+  return (
+    <div>
+       <input placeholder="Shubham.." onChange={(e)=>{
+        setName(e.target.value);
+       }}></input>
+      <button onClick={fetchAge}> Predict Age</button>
+      <p>`predicted{predictedAge}</p>
     </div>
   );
-}
+};
 
 export default App;
