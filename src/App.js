@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Menu from './pages/Menu'
+import Home from './pages/Home'
+import Contact from './pages/Contact'
+import Navbar from './pages/Navbar'
 
 const App = () => {
-  const [predictedAge, setPredictedAge] = useState(0);
-  const[name,setName]=useState("");
-  const fetchAge=()=>{
-     axios.get(`https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent`).then((res)=>{
-      console.log(res.data);
-     })
-  }
- 
-
   return (
     <div>
-       <input placeholder="Shubham.." onChange={(e)=>{
-        setName(e.target.value);
-       }}></input>
-      <button onClick={fetchAge}> Predict Age</button>
-      <p>`predicted{predictedAge}</p>
+        <Router>
+           <Navbar/>
+           <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path='/menu' element={<Menu/>}/>
+                <Route path='/contact' element={<Contact/>}/>
+                <Route path='*' element={<h1>Page is not found</h1>}/>
+           </Routes>
+        </Router>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
