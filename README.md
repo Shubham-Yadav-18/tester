@@ -69,6 +69,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 ### dependencies
-  react-hook-form for form data structuring
-  yup for front-end side form validation
-  yupResolver for passing data format to useForm
+react-hook-form for form data structuring
+yup for front-end side form validation
+yupResolver for passing data format to useForm
